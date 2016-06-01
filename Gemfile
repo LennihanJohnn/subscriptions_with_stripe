@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
+#ruby '2.2.1'
 gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -33,6 +33,7 @@ group :development do
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
   gem 'spring-commands-rspec'
+  gem 'listen', '3.1.1'
 end
 group :development, :test do
   gem 'factory_girl_rails'

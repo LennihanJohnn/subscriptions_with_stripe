@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @episode.name
+%p
+  %b Description:
+  = @episode.description
+
+= link_to 'Subscribe To Watch', new_subscription_path, class: 'btn btn-primary'
+\|
+= link_to 'Back', episodes_path

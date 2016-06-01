@@ -14,8 +14,8 @@ development:
   reconnect: false
   database: subscriptions_with_stripe_development
   pool: 5
-  username: subscriptions_with_stripe
-  password:
+  username: root
+  password: response
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -27,8 +27,8 @@ test:
   reconnect: false
   database: subscriptions_with_stripe_test
   pool: 5
-  username: subscriptions_with_stripe
-  password:
+  username: root
+  password: response
   host: localhost
 
 production:
