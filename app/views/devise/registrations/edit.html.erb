@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="col-sm-6">
 <div class="authform">
   <h3>Edit <%= resource_name.to_s.humanize %></h3>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
@@ -72,4 +74,13 @@
 
   <h3>Cancel Account</h3>
   <p>Unhappy? <%= button_to "Cancel my account", subscription_path, :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+</div>
+</div>
+<div class="col-sm-6">
+  <h4>Your Previous Charges</h4>
+  <% current_user.charges.each do |charge| %>
+    <div>You were chaeged <%= charge.amount %>.</div>
+    <div><%= charge.card_brand %> **** **** **** <%= charge.card_last4 %></div>
+    <div>Expires <%= charge.card_exp_month %> / <%= charge.card_exp_year %></div>
+  <% end %>
 </div>
