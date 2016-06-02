@@ -31,7 +31,45 @@
   <% end %>
 </div>
 <div class="authform">
-<h3>Cancel Account</h3>
-<p>Unhappy? We'll be sad to see you go.</p>
-<%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+  <% if current_user.subscribed? %>
+  <h3>Update Card</h3>
+
+  <p>You current card on file is: </p>
+  <div><%= current_user.card_brand %> **** **** **** <%= current_user.card_last4 %></div>
+  <div>Expires <%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
+
+  <hr />
+
+  <%= form_tag card_path, method: :put, id: "payment-form" do %>
+    <span class="payment-errors"></span>
+
+    <div class="form-row">
+      <label>
+        <span>Card Number</span>
+        <input type="text" size="20" data-stripe="number" value="4242 4242 4242 4242">
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label>
+        <span>Expiration (MM/YY)</span>
+        <input type="text" size="2" data-stripe="exp_month" value="12">
+      </label>
+      <span> / </span>
+      <input type="text" size="4" data-stripe="exp_year" value="2020">
+    </div>
+
+    <div class="form-row">
+      <label>
+        <span>CVC</span>
+        <input type="text" size="3" data-stripe="cvc" value="123">
+      </label>
+    </div>
+
+    <input type="submit" class="submit" value="Update Card">
+  <% end %>
+  <% end %>
+
+  <h3>Cancel Account</h3>
+  <p>Unhappy? <%= button_to "Cancel my account", subscription_path, :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
 </div>

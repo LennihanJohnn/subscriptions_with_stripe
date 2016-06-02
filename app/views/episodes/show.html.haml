@@ -7,9 +7,9 @@
   %b Description:
   = @episode.description
 
-- if current_user_subscribed?
+-if current_user_subscribed?
   OUR SECRET VIDEO
-- else
+-else
   = link_to 'Subscribe To Watch', new_subscription_path, class: 'btn btn-primary'
   \|
   = link_to 'Back', episodes_path

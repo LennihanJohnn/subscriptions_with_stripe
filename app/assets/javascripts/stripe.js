@@ -25,15 +25,29 @@ function stripeResponseHandler(status, response) {
 };
 
 $(document).on('ready page:change', function() {
-  Stripe.setPublishableKey($("meta[name='stripe-key']").attr("content"));
-  $('#payment-form').submit(function(event) {
-    // Disable the submit button to prevent repeated clicks:
-    $(this).find('.submit').prop('disabled', true);
 
-    // Request a token from Stripe:
-    Stripe.card.createToken($(this), stripeResponseHandler);
+  Stripe.setPublishableKey($("meta[name='stripe-key']").attr("content"));
+
+  $('#payment-form').submit(function(event) {
+
+    if ($(".card-fields").hasClass("hidden")) {
+      //Use the default card
+      ('#payment-form').get(0).submit();
+    } else {
+      // Disable the submit button to prevent repeated clicks:
+      $(this).find('.submit').prop('disabled', true);
+
+      // Request a token from Stripe:
+      Stripe.card.createToken($(this), stripeResponseHandler);
+    }
 
     // Prevent the form from being submitted:
     return false;
+  });
+
+  $('.use-different-card').on('click', function(event) {
+    event.preventDefault();
+    $('.card-on-file').hide();
+    $('.card-fields').removeClass("hidden");
   });
 })

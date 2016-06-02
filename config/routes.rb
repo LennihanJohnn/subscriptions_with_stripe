@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  resources :users
   resources :episodes
   resource :subscription
+  resource :card
   root to: 'episodes#index'
-  devise_for :users
-  resources :users
 end
