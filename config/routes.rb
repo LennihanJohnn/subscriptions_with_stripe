@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resource :subscription
   resource :card
   root to: 'episodes#index'
+
+  get "/charges/:id/show", to:"charges#show", as: :charge
 end

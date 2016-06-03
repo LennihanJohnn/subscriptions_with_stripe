@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'stripe'
 gem 'stripe_event'
+gem 'receipts'
 group :development, :test do
   gem 'byebug'
 end
